@@ -17,17 +17,7 @@ export function createMinimalInput (name: string, type: string, position: number
     })
 }
 
-function createBinding (position: number, prefix: string): cwltsauto.CommandLineBinding {
-    return new cwltsauto.CommandLineBinding({
-            loadContents: false,
-            position: position,
-            prefix: prefix,
-            separate: undefined,
-            itemSeparator: undefined,
-            valueFrom: undefined,
-            shellQuote: undefined
-    })
-}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export function assignDoc (input: cwltsauto.CommandInputParameter, doc: string | string[]): void {
     input.doc = doc
@@ -57,4 +47,17 @@ export function assignLoadListing (input: cwltsauto.CommandInputParameter, loadL
     input.loadListing = loadListing
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function createBinding (position: number, prefix: string): cwltsauto.CommandLineBinding {
+    return new cwltsauto.CommandLineBinding({
+            loadContents: false,
+            position: position,
+            prefix: prefix,
+            separate: undefined,
+            itemSeparator: undefined,
+            valueFrom: undefined,
+            shellQuote: undefined
+    })
+}
 

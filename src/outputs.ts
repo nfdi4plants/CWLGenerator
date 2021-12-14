@@ -13,6 +13,8 @@ export function createMininmalOutput (name: string, type: string): cwltsauto.Com
     })
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 export function assignLabel (output: cwltsauto.CommandOutputParameter, label: string): void {
     output.label = label
 }
@@ -35,4 +37,33 @@ export function assignFormat (output: cwltsauto.CommandOutputParameter, format: 
 
 export function assignOutputBinding (output: cwltsauto.CommandOutputParameter, outputBinding: cwltsauto.CommandOutputBinding): void {
     output.outputBinding = outputBinding
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function createOutputBinding (): cwltsauto.CommandOutputBinding {
+    return new cwltsauto.CommandOutputBinding({
+        loadContents: undefined,
+        loadListing: undefined,
+        glob: undefined,
+        outputEval: undefined
+    })
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function assignLoadContents (outputBinding: cwltsauto.CommandOutputBinding, loadContents: boolean): void {
+    outputBinding.loadContents = loadContents
+}
+
+export function assignLoadListing (outputBinding: cwltsauto.CommandOutputBinding, loadListing: string): void {
+    outputBinding.loadListing = loadListing
+}
+
+export function assignGlob (outputBinding: cwltsauto.CommandOutputBinding, glob: string | string[]): void {
+    outputBinding.glob = glob
+}
+
+export function assignOutputEval (outputBinding: cwltsauto.CommandOutputBinding, outputEval: string): void {
+    outputBinding.outputEval = outputEval
 }

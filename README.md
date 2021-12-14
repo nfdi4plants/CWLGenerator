@@ -1,5 +1,5 @@
 # CWLGenerator
-## An arc Hackathon project
+## An ARC Hackathon project
 CWLGenerator is a tool that generates .cwl files by asking a series of questions.
 
 ### Getting started

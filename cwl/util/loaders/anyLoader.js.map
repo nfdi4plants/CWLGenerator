@@ -1,0 +1,1 @@
+{"version":3,"file":"anyLoader.js","sourceRoot":"","sources":["../../../src/util/loaders/anyLoader.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,0CAAyE;AAEzE,MAAa,UAAU;IACf,IAAI,CAAE,GAAQ,EAAE,OAAe,EAAE,cAA8B,EAAE,OAA4B;;YACjG,IAAI,GAAG,IAAI,IAAI,EAAE;gBACf,OAAO,GAAG,CAAA;aACX;YACD,MAAM,IAAI,8BAAmB,CAAC,mBAAmB,CAAC,CAAA;QACpD,CAAC;KAAA;CACF;AAPD,gCAOC"}

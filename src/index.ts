@@ -33,7 +33,7 @@ async function generateInputs(count: number) {
                 type: 'list',
                 name: 'inputType',
                 message: "What is the type of the input?",
-                choices: ["File", "Directory", "Number"]
+                choices: ["string","File", "Directory", "Number"]
             }
         ])
         allInputs.push(answers)
@@ -64,7 +64,7 @@ async function followUpFolder (n: number) {
                 type: 'list',
                 name: 'outputType',
                 message: "What is the type of the output?",
-                choices: ["File", "Directory", "Number"]
+                choices: ["File", "Directory", "stdout"]
             }
         ])
     return answer
@@ -120,7 +120,7 @@ async function main() {
                 OutputName: "WorkingDirectory",
                 Binding:"./",
                 isArray: false,
-                OutputType: "Dictionary"
+                OutputType: "Directory"
             }
         )
     }

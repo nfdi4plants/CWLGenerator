@@ -1,6 +1,12 @@
 import * as cwltsauto from 'cwl-ts-auto'
 
-export function createMininmalOutput (name: string, type: string): cwltsauto.CommandOutputParameter{
+type CWLOutputType =
+    | string 
+    | cwltsauto.CommandOutputRecordSchema 
+    | cwltsauto.CommandOutputEnumSchema 
+    | cwltsauto.CommandOutputArraySchema
+
+export function createMininmalOutput (name: string, type: CWLOutputType | CWLOutputType[]): cwltsauto.CommandOutputParameter{
     return new cwltsauto.CommandOutputParameter({
         id: name,
         label: undefined,

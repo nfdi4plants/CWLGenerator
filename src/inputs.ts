@@ -1,6 +1,12 @@
 import * as cwltsauto from 'cwl-ts-auto'
 
-export function createMinimalInput (name: string, type: string, position: number, prefix: string): cwltsauto.CommandInputParameter {
+export type CWLInputType =
+    | string 
+    | cwltsauto.CommandInputRecordSchema 
+    | cwltsauto.CommandInputEnumSchema 
+    | cwltsauto.CommandInputArraySchema 
+
+export function createMinimalInput (name: string, type: CWLInputType | CWLInputType[], position: number, prefix: string): cwltsauto.CommandInputParameter {
     let binding = createBinding(position,prefix)
     return new cwltsauto.CommandInputParameter({
         id: name,

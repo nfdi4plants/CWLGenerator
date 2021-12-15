@@ -9,7 +9,7 @@ export declare class CommandOutputEnumSchema extends Saveable implements Interna
     /**
      * The identifier for this type
      */
-    name: undefined | string;
+    name?: undefined | string;
     /**
      * Defines the set of valid symbols.
      */
@@ -21,19 +21,19 @@ export declare class CommandOutputEnumSchema extends Saveable implements Interna
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     constructor({ extensionFields, loadingOptions, name, symbols, type, label, doc }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         symbols: Array<string>;
         type: string;
-        label: undefined | string;
-        doc: undefined | string | Array<string>;
-        name: undefined | string;
+        label?: undefined | string;
+        doc?: undefined | string | Array<string>;
+        name?: undefined | string;
     });
     /**
      * Used to construct instances of {@link CommandOutputEnumSchema }.

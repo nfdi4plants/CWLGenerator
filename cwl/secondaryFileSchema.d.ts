@@ -80,12 +80,12 @@ export declare class SecondaryFileSchema extends Saveable {
      * input and `false` for secondary files on output.
      *
      */
-    required: undefined | boolean | string;
+    required?: undefined | boolean | string;
     constructor({ extensionFields, loadingOptions, pattern, required }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         pattern: string;
-        required: undefined | boolean | string;
+        required?: undefined | boolean | string;
     });
     /**
      * Used to construct instances of {@link SecondaryFileSchema }.

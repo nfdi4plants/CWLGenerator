@@ -9,7 +9,7 @@ export declare class CommandInputArraySchema extends Saveable implements Interna
     /**
      * The identifier for this type
      */
-    name: undefined | string;
+    name?: undefined | string;
     /**
      * Defines the type of the array elements.
      */
@@ -21,24 +21,24 @@ export declare class CommandInputArraySchema extends Saveable implements Interna
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     /**
      * Describes how to turn this object into command line arguments.
      */
-    inputBinding: undefined | Internal.CommandLineBinding;
+    inputBinding?: undefined | Internal.CommandLineBinding;
     constructor({ extensionFields, loadingOptions, name, items, type, label, doc, inputBinding }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         items: string | Internal.CommandInputRecordSchema | Internal.CommandInputEnumSchema | Internal.CommandInputArraySchema | Array<string | Internal.CommandInputRecordSchema | Internal.CommandInputEnumSchema | Internal.CommandInputArraySchema>;
         type: string;
-        label: undefined | string;
-        doc: undefined | string | Array<string>;
-        name: undefined | string;
-        inputBinding: undefined | Internal.CommandLineBinding;
+        label?: undefined | string;
+        doc?: undefined | string | Array<string>;
+        name?: undefined | string;
+        inputBinding?: undefined | Internal.CommandLineBinding;
     });
     /**
      * Used to construct instances of {@link CommandInputArraySchema }.

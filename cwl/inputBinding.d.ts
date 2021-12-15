@@ -11,11 +11,11 @@ export declare class InputBinding extends Saveable {
      * CWL v2.0.  Use `InputParameter.loadContents` instead.
      *
      */
-    loadContents: undefined | boolean;
+    loadContents?: undefined | boolean;
     constructor({ extensionFields, loadingOptions, loadContents }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        loadContents: undefined | boolean;
+        loadContents?: undefined | boolean;
     });
     /**
      * Used to construct instances of {@link InputBinding }.

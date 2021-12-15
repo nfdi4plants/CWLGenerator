@@ -67,6 +67,7 @@ function expandUrl(url, baseUrl, loadingOptions, scopedId = false, vocabTerm = f
     }
     const split = URI.parse(url);
     if ((split.scheme != null && ['http', 'https', 'file'].includes(split.scheme)) || url.startsWith('$(') || url.startsWith('${')) {
+        throw Error('not implemented');
     }
     else if (scopedId && split.fragment === undefined) {
         const splitbase = URI.parse(baseUrl);

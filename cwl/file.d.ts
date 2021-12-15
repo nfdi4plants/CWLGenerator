@@ -96,7 +96,7 @@ export declare class File extends Saveable {
      * then follow the rules above.
      *
      */
-    location: undefined | string;
+    location?: undefined | string;
     /**
      * The local host path where the File is available when a CommandLineTool is
      * executed.  This field must be set by the implementation.  The final
@@ -118,7 +118,7 @@ export declare class File extends Saveable {
      * `permanentFailure`.
      *
      */
-    path: undefined | string;
+    path?: undefined | string;
     /**
      * The base name of the file, that is, the name of the file without any
      * leading directory path.  The base name must not contain a slash `/`.
@@ -133,7 +133,7 @@ export declare class File extends Saveable {
      * `basename`.
      *
      */
-    basename: undefined | string;
+    basename?: undefined | string;
     /**
      * The name of the directory containing file, that is, the path leading up
      * to the final slash in the path such that `dirname + '/' + basename ==
@@ -145,7 +145,7 @@ export declare class File extends Saveable {
      * context.
      *
      */
-    dirname: undefined | string;
+    dirname?: undefined | string;
     /**
      * The basename root such that `nameroot + nameext == basename`, and
      * `nameext` is empty or begins with a period and contains at most one
@@ -157,7 +157,7 @@ export declare class File extends Saveable {
      * of `basename` prior to evaluating parameter references or expressions.
      *
      */
-    nameroot: undefined | string;
+    nameroot?: undefined | string;
     /**
      * The basename extension such that `nameroot + nameext == basename`, and
      * `nameext` is empty or begins with a period and contains at most one
@@ -168,17 +168,17 @@ export declare class File extends Saveable {
      * of `basename` prior to evaluating parameter references or expressions.
      *
      */
-    nameext: undefined | string;
+    nameext?: undefined | string;
     /**
      * Optional hash code for validating file integrity.  Currently must be in the form
      * "sha1$ + hexadecimal string" using the SHA-1 algorithm.
      *
      */
-    checksum: undefined | string;
+    checksum?: undefined | string;
     /**
      * Optional file size (in bytes)
      */
-    size: undefined | number;
+    size?: undefined | number;
     /**
      * A list of additional files or directories that are associated with the
      * primary file and must be transferred alongside the primary file.
@@ -188,7 +188,7 @@ export declare class File extends Saveable {
      * which the same rules apply.
      *
      */
-    secondaryFiles: undefined | Array<Internal.File | Internal.Directory>;
+    secondaryFiles?: undefined | Array<Internal.File | Internal.Directory>;
     /**
      * The format of the file: this must be an IRI of a concept node that
      * represents the file format, preferrably defined within an ontology.
@@ -206,7 +206,7 @@ export declare class File extends Saveable {
      * runtime may perform exact file format matches.
      *
      */
-    format: undefined | string;
+    format?: undefined | string;
     /**
      * File contents literal.
      *
@@ -231,22 +231,22 @@ export declare class File extends Saveable {
      * implementation must raise a fatal error.
      *
      */
-    contents: undefined | string;
+    contents?: undefined | string;
     constructor({ extensionFields, loadingOptions, class_, location, path, basename, dirname, nameroot, nameext, checksum, size, secondaryFiles, format, contents }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         class_: string;
-        location: undefined | string;
-        path: undefined | string;
-        basename: undefined | string;
-        dirname: undefined | string;
-        nameroot: undefined | string;
-        nameext: undefined | string;
-        checksum: undefined | string;
-        size: undefined | number;
-        secondaryFiles: undefined | Array<Internal.File | Internal.Directory>;
-        format: undefined | string;
-        contents: undefined | string;
+        location?: undefined | string;
+        path?: undefined | string;
+        basename?: undefined | string;
+        dirname?: undefined | string;
+        nameroot?: undefined | string;
+        nameext?: undefined | string;
+        checksum?: undefined | string;
+        size?: undefined | number;
+        secondaryFiles?: undefined | Array<Internal.File | Internal.Directory>;
+        format?: undefined | string;
+        contents?: undefined | string;
     });
     /**
      * Used to construct instances of {@link File }.

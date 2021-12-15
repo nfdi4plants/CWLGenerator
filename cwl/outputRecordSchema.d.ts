@@ -9,11 +9,11 @@ export declare class OutputRecordSchema extends Saveable implements Internal.Rec
     /**
      * The identifier for this type
      */
-    name: undefined | string;
+    name?: undefined | string;
     /**
      * Defines the fields of the record.
      */
-    fields: undefined | Array<Internal.OutputRecordField>;
+    fields?: undefined | Array<Internal.OutputRecordField>;
     /**
      * Must be `record`
      */
@@ -21,19 +21,19 @@ export declare class OutputRecordSchema extends Saveable implements Internal.Rec
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     constructor({ extensionFields, loadingOptions, name, fields, type, label, doc }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        fields: undefined | Array<Internal.OutputRecordField>;
+        fields?: undefined | Array<Internal.OutputRecordField>;
         type: string;
-        label: undefined | string;
-        doc: undefined | string | Array<string>;
-        name: undefined | string;
+        label?: undefined | string;
+        doc?: undefined | string | Array<string>;
+        name?: undefined | string;
     });
     /**
      * Used to construct instances of {@link OutputRecordSchema }.

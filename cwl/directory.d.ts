@@ -74,7 +74,7 @@ export declare class Directory extends Saveable {
      * then follow the rules above.
      *
      */
-    location: undefined | string;
+    location?: undefined | string;
     /**
      * The local path where the Directory is made available prior to executing a
      * CommandLineTool.  This must be set by the implementation.  This field
@@ -91,7 +91,7 @@ export declare class Directory extends Saveable {
      * `permanentFailure`.
      *
      */
-    path: undefined | string;
+    path?: undefined | string;
     /**
      * The base name of the directory, that is, the name of the file without any
      * leading directory path.  The base name must not contain a slash `/`.
@@ -106,7 +106,7 @@ export declare class Directory extends Saveable {
      * `basename`.
      *
      */
-    basename: undefined | string;
+    basename?: undefined | string;
     /**
      * List of files or subdirectories contained in this directory.  The name
      * of each file or subdirectory is determined by the `basename` field of
@@ -117,15 +117,15 @@ export declare class Directory extends Saveable {
      * merged.
      *
      */
-    listing: undefined | Array<Internal.File | Internal.Directory>;
+    listing?: undefined | Array<Internal.File | Internal.Directory>;
     constructor({ extensionFields, loadingOptions, class_, location, path, basename, listing }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         class_: string;
-        location: undefined | string;
-        path: undefined | string;
-        basename: undefined | string;
-        listing: undefined | Array<Internal.File | Internal.Directory>;
+        location?: undefined | string;
+        path?: undefined | string;
+        basename?: undefined | string;
+        listing?: undefined | Array<Internal.File | Internal.Directory>;
     });
     /**
      * Used to construct instances of {@link Directory }.

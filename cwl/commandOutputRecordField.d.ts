@@ -14,7 +14,7 @@ export declare class CommandOutputRecordField extends Saveable implements Intern
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     /**
      * The field type
      *
@@ -23,7 +23,7 @@ export declare class CommandOutputRecordField extends Saveable implements Intern
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -68,7 +68,7 @@ export declare class CommandOutputRecordField extends Saveable implements Intern
      *   3. Append the remainder of the string to the end of the file path.
      *
      */
-    secondaryFiles: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
+    secondaryFiles?: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -78,7 +78,7 @@ export declare class CommandOutputRecordField extends Saveable implements Intern
      * pipe.  Default: `false`.
      *
      */
-    streamable: undefined | boolean;
+    streamable?: undefined | boolean;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -86,24 +86,24 @@ export declare class CommandOutputRecordField extends Saveable implements Intern
      * File object.
      *
      */
-    format: undefined | string;
+    format?: undefined | string;
     /**
      * Describes how to generate this output object based on the files
      * produced by a CommandLineTool
      *
      */
-    outputBinding: undefined | Internal.CommandOutputBinding;
+    outputBinding?: undefined | Internal.CommandOutputBinding;
     constructor({ extensionFields, loadingOptions, name, doc, type, label, secondaryFiles, streamable, format, outputBinding }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        doc: undefined | string | Array<string>;
+        doc?: undefined | string | Array<string>;
         name: string;
         type: string | Internal.CommandOutputRecordSchema | Internal.CommandOutputEnumSchema | Internal.CommandOutputArraySchema | Array<string | Internal.CommandOutputRecordSchema | Internal.CommandOutputEnumSchema | Internal.CommandOutputArraySchema>;
-        label: undefined | string;
-        secondaryFiles: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
-        streamable: undefined | boolean;
-        format: undefined | string;
-        outputBinding: undefined | Internal.CommandOutputBinding;
+        label?: undefined | string;
+        secondaryFiles?: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
+        streamable?: undefined | boolean;
+        format?: undefined | string;
+        outputBinding?: undefined | Internal.CommandOutputBinding;
     });
     /**
      * Used to construct instances of {@link CommandOutputRecordField }.

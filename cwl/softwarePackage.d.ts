@@ -17,7 +17,7 @@ export declare class SoftwarePackage extends Saveable {
      * compatible.
      *
      */
-    version: undefined | Array<string>;
+    version?: undefined | Array<string>;
     /**
      * One or more [IRI](https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier)s
      * identifying resources for installing or enabling the software named in
@@ -62,13 +62,13 @@ export declare class SoftwarePackage extends Saveable {
      * clutter.
      *
      */
-    specs: undefined | Array<string>;
+    specs?: undefined | Array<string>;
     constructor({ extensionFields, loadingOptions, package_, version, specs }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         package_: string;
-        version: undefined | Array<string>;
-        specs: undefined | Array<string>;
+        version?: undefined | Array<string>;
+        specs?: undefined | Array<string>;
     });
     /**
      * Used to construct instances of {@link SoftwarePackage }.

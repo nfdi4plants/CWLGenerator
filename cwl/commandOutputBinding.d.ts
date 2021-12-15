@@ -29,7 +29,7 @@ export declare class CommandOutputBinding extends Saveable implements Internal.L
      * the implementation must raise a fatal error.
      *
      */
-    loadContents: undefined | boolean;
+    loadContents?: undefined | boolean;
     /**
      * Only valid when `type: Directory` or is an array of `items: Directory`.
      *
@@ -43,7 +43,7 @@ export declare class CommandOutputBinding extends Saveable implements Internal.L
      *   3. By default: `no_listing`
      *
      */
-    loadListing: undefined | string;
+    loadListing?: undefined | string;
     /**
      * Find files or directories relative to the output directory, using POSIX
      * glob(3) pathname matching.  If an array is provided, find files or
@@ -82,7 +82,7 @@ export declare class CommandOutputBinding extends Saveable implements Internal.L
      * container filesystem except for declared input and output.
      *
      */
-    glob: undefined | string | Array<string>;
+    glob?: undefined | string | Array<string>;
     /**
      * Evaluate an expression to generate the output value.  If
      * `glob` was specified, the value of `self` must be an array
@@ -105,14 +105,14 @@ export declare class CommandOutputBinding extends Saveable implements Internal.L
      * `loadContents` limit.
      *
      */
-    outputEval: undefined | string;
+    outputEval?: undefined | string;
     constructor({ extensionFields, loadingOptions, loadContents, loadListing, glob, outputEval }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        loadContents: undefined | boolean;
-        loadListing: undefined | string;
-        glob: undefined | string | Array<string>;
-        outputEval: undefined | string;
+        loadContents?: undefined | boolean;
+        loadListing?: undefined | string;
+        glob?: undefined | string | Array<string>;
+        outputEval?: undefined | string;
     });
     /**
      * Used to construct instances of {@link CommandOutputBinding }.

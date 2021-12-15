@@ -9,7 +9,7 @@ export declare class InputArraySchema extends Saveable implements Internal.Array
     /**
      * The identifier for this type
      */
-    name: undefined | string;
+    name?: undefined | string;
     /**
      * Defines the type of the array elements.
      */
@@ -21,19 +21,19 @@ export declare class InputArraySchema extends Saveable implements Internal.Array
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     constructor({ extensionFields, loadingOptions, name, items, type, label, doc }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         items: string | Internal.InputRecordSchema | Internal.InputEnumSchema | Internal.InputArraySchema | Array<string | Internal.InputRecordSchema | Internal.InputEnumSchema | Internal.InputArraySchema>;
         type: string;
-        label: undefined | string;
-        doc: undefined | string | Array<string>;
-        name: undefined | string;
+        label?: undefined | string;
+        doc?: undefined | string | Array<string>;
+        name?: undefined | string;
     });
     /**
      * Used to construct instances of {@link InputArraySchema }.

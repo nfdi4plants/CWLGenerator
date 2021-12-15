@@ -9,7 +9,7 @@ export declare class CommandInputEnumSchema extends Saveable implements Internal
     /**
      * The identifier for this type
      */
-    name: undefined | string;
+    name?: undefined | string;
     /**
      * Defines the set of valid symbols.
      */
@@ -21,24 +21,24 @@ export declare class CommandInputEnumSchema extends Saveable implements Internal
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     /**
      * Describes how to turn this object into command line arguments.
      */
-    inputBinding: undefined | Internal.CommandLineBinding;
+    inputBinding?: undefined | Internal.CommandLineBinding;
     constructor({ extensionFields, loadingOptions, name, symbols, type, label, doc, inputBinding }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         symbols: Array<string>;
         type: string;
-        label: undefined | string;
-        doc: undefined | string | Array<string>;
-        name: undefined | string;
-        inputBinding: undefined | Internal.CommandLineBinding;
+        label?: undefined | string;
+        doc?: undefined | string | Array<string>;
+        name?: undefined | string;
+        inputBinding?: undefined | Internal.CommandLineBinding;
     });
     /**
      * Used to construct instances of {@link CommandInputEnumSchema }.

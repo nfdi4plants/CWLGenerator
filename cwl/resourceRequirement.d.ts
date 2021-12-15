@@ -65,14 +65,14 @@ export declare class ResourceRequirement extends Saveable implements Internal.Pr
      * next whole number.
      *
      */
-    coresMin: undefined | number | string;
+    coresMin?: undefined | number | string;
     /**
      * Maximum reserved number of CPU cores.
      *
      * See `coresMin` for discussion about fractional CPU requests.
      *
      */
-    coresMax: undefined | number | string;
+    coresMax?: undefined | number | string;
     /**
      * Minimum reserved RAM in mebibytes (2**20) (default is 256)
      *
@@ -83,14 +83,14 @@ export declare class ResourceRequirement extends Saveable implements Internal.Pr
      * non-zero integer.
      *
      */
-    ramMin: undefined | number | string;
+    ramMin?: undefined | number | string;
     /**
      * Maximum reserved RAM in mebibytes (2**20)
      *
      * See `ramMin` for discussion about fractional RAM requests.
      *
      */
-    ramMax: undefined | number | string;
+    ramMax?: undefined | number | string;
     /**
      * Minimum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20) (default is 1024)
      *
@@ -101,14 +101,14 @@ export declare class ResourceRequirement extends Saveable implements Internal.Pr
      * must be a non-zero integer.
      *
      */
-    tmpdirMin: undefined | number | string;
+    tmpdirMin?: undefined | number | string;
     /**
      * Maximum reserved filesystem based storage for the designated temporary directory, in mebibytes (2**20)
      *
      * See `tmpdirMin` for discussion about fractional storage requests.
      *
      */
-    tmpdirMax: undefined | number | string;
+    tmpdirMax?: undefined | number | string;
     /**
      * Minimum reserved filesystem based storage for the designated output directory, in mebibytes (2**20) (default is 1024)
      *
@@ -119,26 +119,26 @@ export declare class ResourceRequirement extends Saveable implements Internal.Pr
      * must be a non-zero integer.
      *
      */
-    outdirMin: undefined | number | string;
+    outdirMin?: undefined | number | string;
     /**
      * Maximum reserved filesystem based storage for the designated output directory, in mebibytes (2**20)
      *
      * See `outdirMin` for discussion about fractional storage requests.
      *
      */
-    outdirMax: undefined | number | string;
+    outdirMax?: undefined | number | string;
     constructor({ extensionFields, loadingOptions, class_, coresMin, coresMax, ramMin, ramMax, tmpdirMin, tmpdirMax, outdirMin, outdirMax }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         class_: string;
-        coresMin: undefined | number | string;
-        coresMax: undefined | number | string;
-        ramMin: undefined | number | string;
-        ramMax: undefined | number | string;
-        tmpdirMin: undefined | number | string;
-        tmpdirMax: undefined | number | string;
-        outdirMin: undefined | number | string;
-        outdirMax: undefined | number | string;
+        coresMin?: undefined | number | string;
+        coresMax?: undefined | number | string;
+        ramMin?: undefined | number | string;
+        ramMax?: undefined | number | string;
+        tmpdirMin?: undefined | number | string;
+        tmpdirMax?: undefined | number | string;
+        outdirMin?: undefined | number | string;
+        outdirMax?: undefined | number | string;
     });
     /**
      * Used to construct instances of {@link ResourceRequirement }.

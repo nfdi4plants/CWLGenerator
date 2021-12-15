@@ -19,11 +19,11 @@ export declare class WorkflowStepOutput extends Saveable implements Internal.Ide
     /**
      * The unique identifier for this object.
      */
-    id: undefined | string;
+    id?: undefined | string;
     constructor({ extensionFields, loadingOptions, id }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        id: undefined | string;
+        id?: undefined | string;
     });
     /**
      * Used to construct instances of {@link WorkflowStepOutput }.

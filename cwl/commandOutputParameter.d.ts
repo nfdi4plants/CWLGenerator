@@ -11,11 +11,11 @@ export declare class CommandOutputParameter extends Saveable implements Internal
     /**
      * The unique identifier for this object.
      */
-    id: undefined | string;
+    id?: undefined | string;
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -60,7 +60,7 @@ export declare class CommandOutputParameter extends Saveable implements Internal
      *   3. Append the remainder of the string to the end of the file path.
      *
      */
-    secondaryFiles: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
+    secondaryFiles?: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -70,11 +70,11 @@ export declare class CommandOutputParameter extends Saveable implements Internal
      * pipe.  Default: `false`.
      *
      */
-    streamable: undefined | boolean;
+    streamable?: undefined | boolean;
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -82,7 +82,7 @@ export declare class CommandOutputParameter extends Saveable implements Internal
      * File object.
      *
      */
-    format: undefined | string;
+    format?: undefined | string;
     /**
      * Specify valid types of data that may be assigned to this parameter.
      *
@@ -91,18 +91,18 @@ export declare class CommandOutputParameter extends Saveable implements Internal
     /**
      * Describes how to generate this output object based on the files produced by a CommandLineTool
      */
-    outputBinding: undefined | Internal.CommandOutputBinding;
+    outputBinding?: undefined | Internal.CommandOutputBinding;
     constructor({ extensionFields, loadingOptions, id, label, secondaryFiles, streamable, doc, format, type, outputBinding }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        label: undefined | string;
-        secondaryFiles: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
-        streamable: undefined | boolean;
-        doc: undefined | string | Array<string>;
-        id: undefined | string;
-        format: undefined | string;
+        label?: undefined | string;
+        secondaryFiles?: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
+        streamable?: undefined | boolean;
+        doc?: undefined | string | Array<string>;
+        id?: undefined | string;
+        format?: undefined | string;
         type: string | Internal.CommandOutputRecordSchema | Internal.CommandOutputEnumSchema | Internal.CommandOutputArraySchema | Array<string | Internal.CommandOutputRecordSchema | Internal.CommandOutputEnumSchema | Internal.CommandOutputArraySchema>;
-        outputBinding: undefined | Internal.CommandOutputBinding;
+        outputBinding?: undefined | Internal.CommandOutputBinding;
     });
     /**
      * Used to construct instances of {@link CommandOutputParameter }.

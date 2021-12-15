@@ -49,7 +49,7 @@ export declare class CommandLineBinding extends Saveable implements Internal.Inp
      * CWL v2.0.  Use `InputParameter.loadContents` instead.
      *
      */
-    loadContents: undefined | boolean;
+    loadContents?: undefined | boolean;
     /**
      * The sorting key.  Default position is 0. If a [CWL Parameter Reference](#Parameter_references)
      * or [CWL Expression](#Expressions_(Optional)) is used and if the
@@ -60,24 +60,24 @@ export declare class CommandLineBinding extends Saveable implements Internal.Inp
      * single value of type int or a null.
      *
      */
-    position: undefined | number | string;
+    position?: undefined | number | string;
     /**
      * Command line prefix to add before the value.
      */
-    prefix: undefined | string;
+    prefix?: undefined | string;
     /**
      * If true (default), then the prefix and value must be added as separate
      * command line arguments; if false, prefix and value must be concatenated
      * into a single command line argument.
      *
      */
-    separate: undefined | boolean;
+    separate?: undefined | boolean;
     /**
      * Join the array elements into a single string with the elements
      * separated by by `itemSeparator`.
      *
      */
-    itemSeparator: undefined | string;
+    itemSeparator?: undefined | string;
     /**
      * If `valueFrom` is a constant string value, use this as the value and
      * apply the binding rules above.
@@ -97,7 +97,7 @@ export declare class CommandLineBinding extends Saveable implements Internal.Inp
      * the `valueFrom` field is required.
      *
      */
-    valueFrom: undefined | string;
+    valueFrom?: undefined | string;
     /**
      * If `ShellCommandRequirement` is in the requirements for the current command,
      * this controls whether the value is quoted on the command line (default is true).
@@ -107,17 +107,17 @@ export declare class CommandLineBinding extends Saveable implements Internal.Inp
      * permit interpretation of any shell metacharacters or directives.
      *
      */
-    shellQuote: undefined | boolean;
+    shellQuote?: undefined | boolean;
     constructor({ extensionFields, loadingOptions, loadContents, position, prefix, separate, itemSeparator, valueFrom, shellQuote }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        loadContents: undefined | boolean;
-        position: undefined | number | string;
-        prefix: undefined | string;
-        separate: undefined | boolean;
-        itemSeparator: undefined | string;
-        valueFrom: undefined | string;
-        shellQuote: undefined | boolean;
+        loadContents?: undefined | boolean;
+        position?: undefined | number | string;
+        prefix?: undefined | string;
+        separate?: undefined | boolean;
+        itemSeparator?: undefined | string;
+        valueFrom?: undefined | string;
+        shellQuote?: undefined | boolean;
     });
     /**
      * Used to construct instances of {@link CommandLineBinding }.

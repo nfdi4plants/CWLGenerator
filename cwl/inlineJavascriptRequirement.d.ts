@@ -21,12 +21,12 @@ export declare class InlineJavascriptRequirement extends Saveable implements Int
      * be called from CWL expressions.
      *
      */
-    expressionLib: undefined | Array<string>;
+    expressionLib?: undefined | Array<string>;
     constructor({ extensionFields, loadingOptions, class_, expressionLib }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         class_: string;
-        expressionLib: undefined | Array<string>;
+        expressionLib?: undefined | Array<string>;
     });
     /**
      * Used to construct instances of {@link InlineJavascriptRequirement }.

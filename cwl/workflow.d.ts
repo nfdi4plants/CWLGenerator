@@ -62,16 +62,16 @@ export declare class Workflow extends Saveable implements Internal.Process {
     /**
      * The unique identifier for this object.
      */
-    id: undefined | string;
+    id?: undefined | string;
     class_: string;
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     /**
      * Defines the input parameters of the process.  The process is ready to
      * run when all required input parameters are associated with concrete
@@ -102,7 +102,7 @@ export declare class Workflow extends Saveable implements Internal.Process {
      * unless overridden at user option.
      *
      */
-    requirements: undefined | Array<Internal.InlineJavascriptRequirement | Internal.SchemaDefRequirement | Internal.LoadListingRequirement | Internal.DockerRequirement | Internal.SoftwareRequirement | Internal.InitialWorkDirRequirement | Internal.EnvVarRequirement | Internal.ShellCommandRequirement | Internal.ResourceRequirement | Internal.WorkReuse | Internal.NetworkAccess | Internal.InplaceUpdateRequirement | Internal.ToolTimeLimit | Internal.SubworkflowFeatureRequirement | Internal.ScatterFeatureRequirement | Internal.MultipleInputFeatureRequirement | Internal.StepInputExpressionRequirement>;
+    requirements?: undefined | Array<Internal.InlineJavascriptRequirement | Internal.SchemaDefRequirement | Internal.LoadListingRequirement | Internal.DockerRequirement | Internal.SoftwareRequirement | Internal.InitialWorkDirRequirement | Internal.EnvVarRequirement | Internal.ShellCommandRequirement | Internal.ResourceRequirement | Internal.WorkReuse | Internal.NetworkAccess | Internal.InplaceUpdateRequirement | Internal.ToolTimeLimit | Internal.SubworkflowFeatureRequirement | Internal.ScatterFeatureRequirement | Internal.MultipleInputFeatureRequirement | Internal.StepInputExpressionRequirement>;
     /**
      * Declares hints applying to either the runtime environment or the
      * workflow engine that may be helpful in executing this process.  It is
@@ -110,13 +110,13 @@ export declare class Workflow extends Saveable implements Internal.Process {
      * the implementation may report a warning.
      *
      */
-    hints: undefined | Array<any>;
+    hints?: undefined | Array<any>;
     /**
      * CWL document version. Always required at the document root. Not
      * required for a Process embedded inside another Process.
      *
      */
-    cwlVersion: undefined | string;
+    cwlVersion?: undefined | string;
     /**
      * An identifier for the type of computational operation, of this Process.
      * Especially useful for "class: Operation", but can also be used for
@@ -133,7 +133,7 @@ export declare class Workflow extends Saveable implements Internal.Process {
      * [Split read mapping](http://edamontology.org/operation_3199).
      *
      */
-    intent: undefined | Array<string>;
+    intent?: undefined | Array<string>;
     /**
      * The individual steps that make up the workflow.  Each step is executed when all of its
      * input data links are fufilled.  An implementation may choose to execute
@@ -145,15 +145,15 @@ export declare class Workflow extends Saveable implements Internal.Process {
     constructor({ extensionFields, loadingOptions, id, class_, label, doc, inputs, outputs, requirements, hints, cwlVersion, intent, steps }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        id: undefined | string;
-        label: undefined | string;
-        doc: undefined | string | Array<string>;
+        id?: undefined | string;
+        label?: undefined | string;
+        doc?: undefined | string | Array<string>;
         inputs: Array<Internal.WorkflowInputParameter>;
         outputs: Array<Internal.WorkflowOutputParameter>;
-        requirements: undefined | Array<Internal.InlineJavascriptRequirement | Internal.SchemaDefRequirement | Internal.LoadListingRequirement | Internal.DockerRequirement | Internal.SoftwareRequirement | Internal.InitialWorkDirRequirement | Internal.EnvVarRequirement | Internal.ShellCommandRequirement | Internal.ResourceRequirement | Internal.WorkReuse | Internal.NetworkAccess | Internal.InplaceUpdateRequirement | Internal.ToolTimeLimit | Internal.SubworkflowFeatureRequirement | Internal.ScatterFeatureRequirement | Internal.MultipleInputFeatureRequirement | Internal.StepInputExpressionRequirement>;
-        hints: undefined | Array<any>;
-        cwlVersion: undefined | string;
-        intent: undefined | Array<string>;
+        requirements?: undefined | Array<Internal.InlineJavascriptRequirement | Internal.SchemaDefRequirement | Internal.LoadListingRequirement | Internal.DockerRequirement | Internal.SoftwareRequirement | Internal.InitialWorkDirRequirement | Internal.EnvVarRequirement | Internal.ShellCommandRequirement | Internal.ResourceRequirement | Internal.WorkReuse | Internal.NetworkAccess | Internal.InplaceUpdateRequirement | Internal.ToolTimeLimit | Internal.SubworkflowFeatureRequirement | Internal.ScatterFeatureRequirement | Internal.MultipleInputFeatureRequirement | Internal.StepInputExpressionRequirement>;
+        hints?: undefined | Array<any>;
+        cwlVersion?: undefined | string;
+        intent?: undefined | Array<string>;
         class_: string;
         steps: Array<Internal.WorkflowStep>;
     });

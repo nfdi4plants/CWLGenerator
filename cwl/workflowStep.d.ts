@@ -90,15 +90,15 @@ export declare class WorkflowStep extends Saveable implements Internal.Identifie
     /**
      * The unique identifier for this object.
      */
-    id: undefined | string;
+    id?: undefined | string;
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     /**
      * Defines the input parameters of the workflow step.  The process is ready to
      * run when all required input parameters are associated with concrete
@@ -123,7 +123,7 @@ export declare class WorkflowStep extends Saveable implements Internal.Identifie
      * unless overridden at user option.
      *
      */
-    requirements: undefined | Array<Internal.InlineJavascriptRequirement | Internal.SchemaDefRequirement | Internal.LoadListingRequirement | Internal.DockerRequirement | Internal.SoftwareRequirement | Internal.InitialWorkDirRequirement | Internal.EnvVarRequirement | Internal.ShellCommandRequirement | Internal.ResourceRequirement | Internal.WorkReuse | Internal.NetworkAccess | Internal.InplaceUpdateRequirement | Internal.ToolTimeLimit | Internal.SubworkflowFeatureRequirement | Internal.ScatterFeatureRequirement | Internal.MultipleInputFeatureRequirement | Internal.StepInputExpressionRequirement>;
+    requirements?: undefined | Array<Internal.InlineJavascriptRequirement | Internal.SchemaDefRequirement | Internal.LoadListingRequirement | Internal.DockerRequirement | Internal.SoftwareRequirement | Internal.InitialWorkDirRequirement | Internal.EnvVarRequirement | Internal.ShellCommandRequirement | Internal.ResourceRequirement | Internal.WorkReuse | Internal.NetworkAccess | Internal.InplaceUpdateRequirement | Internal.ToolTimeLimit | Internal.SubworkflowFeatureRequirement | Internal.ScatterFeatureRequirement | Internal.MultipleInputFeatureRequirement | Internal.StepInputExpressionRequirement>;
     /**
      * Declares hints applying to either the runtime environment or the
      * workflow engine that may be helpful in executing this workflow step.  It is
@@ -131,7 +131,7 @@ export declare class WorkflowStep extends Saveable implements Internal.Identifie
      * the implementation may report a warning.
      *
      */
-    hints: undefined | Array<any>;
+    hints?: undefined | Array<any>;
     /**
      * Specifies the process to run.
      *
@@ -143,27 +143,27 @@ export declare class WorkflowStep extends Saveable implements Internal.Identifie
      * produces a `null` on each output.
      *
      */
-    when: undefined | string;
-    scatter: undefined | string | Array<string>;
+    when?: undefined | string;
+    scatter?: undefined | string | Array<string>;
     /**
      * Required if `scatter` is an array of more than one element.
      *
      */
-    scatterMethod: undefined | string;
+    scatterMethod?: undefined | string;
     constructor({ extensionFields, loadingOptions, id, label, doc, in_, out, requirements, hints, run, when, scatter, scatterMethod }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        id: undefined | string;
-        label: undefined | string;
-        doc: undefined | string | Array<string>;
+        id?: undefined | string;
+        label?: undefined | string;
+        doc?: undefined | string | Array<string>;
         in_: Array<Internal.WorkflowStepInput>;
         out: Array<string | Internal.WorkflowStepOutput>;
-        requirements: undefined | Array<Internal.InlineJavascriptRequirement | Internal.SchemaDefRequirement | Internal.LoadListingRequirement | Internal.DockerRequirement | Internal.SoftwareRequirement | Internal.InitialWorkDirRequirement | Internal.EnvVarRequirement | Internal.ShellCommandRequirement | Internal.ResourceRequirement | Internal.WorkReuse | Internal.NetworkAccess | Internal.InplaceUpdateRequirement | Internal.ToolTimeLimit | Internal.SubworkflowFeatureRequirement | Internal.ScatterFeatureRequirement | Internal.MultipleInputFeatureRequirement | Internal.StepInputExpressionRequirement>;
-        hints: undefined | Array<any>;
+        requirements?: undefined | Array<Internal.InlineJavascriptRequirement | Internal.SchemaDefRequirement | Internal.LoadListingRequirement | Internal.DockerRequirement | Internal.SoftwareRequirement | Internal.InitialWorkDirRequirement | Internal.EnvVarRequirement | Internal.ShellCommandRequirement | Internal.ResourceRequirement | Internal.WorkReuse | Internal.NetworkAccess | Internal.InplaceUpdateRequirement | Internal.ToolTimeLimit | Internal.SubworkflowFeatureRequirement | Internal.ScatterFeatureRequirement | Internal.MultipleInputFeatureRequirement | Internal.StepInputExpressionRequirement>;
+        hints?: undefined | Array<any>;
         run: string | Internal.CommandLineTool | Internal.ExpressionTool | Internal.Workflow | Internal.Operation;
-        when: undefined | string;
-        scatter: undefined | string | Array<string>;
-        scatterMethod: undefined | string;
+        when?: undefined | string;
+        scatter?: undefined | string | Array<string>;
+        scatterMethod?: undefined | string;
     });
     /**
      * Used to construct instances of {@link WorkflowStep }.

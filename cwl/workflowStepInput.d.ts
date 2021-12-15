@@ -119,24 +119,24 @@ export declare class WorkflowStepInput extends Saveable implements Internal.Iden
     /**
      * The unique identifier for this object.
      */
-    id: undefined | string;
+    id?: undefined | string;
     /**
      * Specifies one or more workflow parameters that will provide input to
      * the underlying step parameter.
      *
      */
-    source: undefined | string | Array<string>;
+    source?: undefined | string | Array<string>;
     /**
      * The method to use to merge multiple inbound links into a single array.
      * If not specified, the default method is "merge_nested".
      *
      */
-    linkMerge: undefined | string;
+    linkMerge?: undefined | string;
     /**
      * The method to use to choose non-null elements among multiple sources.
      *
      */
-    pickValue: undefined | string;
+    pickValue?: undefined | string;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -148,7 +148,7 @@ export declare class WorkflowStepInput extends Saveable implements Internal.Iden
      * the implementation must raise a fatal error.
      *
      */
-    loadContents: undefined | boolean;
+    loadContents?: undefined | boolean;
     /**
      * Only valid when `type: Directory` or is an array of `items: Directory`.
      *
@@ -162,18 +162,18 @@ export declare class WorkflowStepInput extends Saveable implements Internal.Iden
      *   3. By default: `no_listing`
      *
      */
-    loadListing: undefined | string;
+    loadListing?: undefined | string;
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * The default value for this parameter to use if either there is no
      * `source` field, or the value produced by the `source` is `null`.  The
      * default must be applied prior to scattering or evaluating `valueFrom`.
      *
      */
-    default_: undefined | any;
+    default_?: undefined | any;
     /**
      * To use valueFrom, [StepInputExpressionRequirement](#StepInputExpressionRequirement) must
      * be specified in the workflow or workflow step requirements.
@@ -199,19 +199,19 @@ export declare class WorkflowStepInput extends Saveable implements Internal.Iden
      * evaluation of `valueFrom` on other parameters.
      *
      */
-    valueFrom: undefined | string;
+    valueFrom?: undefined | string;
     constructor({ extensionFields, loadingOptions, id, source, linkMerge, pickValue, loadContents, loadListing, label, default_, valueFrom }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        id: undefined | string;
-        source: undefined | string | Array<string>;
-        linkMerge: undefined | string;
-        pickValue: undefined | string;
-        loadContents: undefined | boolean;
-        loadListing: undefined | string;
-        label: undefined | string;
-        default_: undefined | any;
-        valueFrom: undefined | string;
+        id?: undefined | string;
+        source?: undefined | string | Array<string>;
+        linkMerge?: undefined | string;
+        pickValue?: undefined | string;
+        loadContents?: undefined | boolean;
+        loadListing?: undefined | string;
+        label?: undefined | string;
+        default_?: undefined | any;
+        valueFrom?: undefined | string;
     });
     /**
      * Used to construct instances of {@link WorkflowStepInput }.

@@ -14,7 +14,7 @@ export declare class OutputRecordField extends Saveable implements Internal.Reco
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     /**
      * The field type
      *
@@ -23,7 +23,7 @@ export declare class OutputRecordField extends Saveable implements Internal.Reco
     /**
      * A short, human-readable label of this object.
      */
-    label: undefined | string;
+    label?: undefined | string;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -68,7 +68,7 @@ export declare class OutputRecordField extends Saveable implements Internal.Reco
      *   3. Append the remainder of the string to the end of the file path.
      *
      */
-    secondaryFiles: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
+    secondaryFiles?: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -78,7 +78,7 @@ export declare class OutputRecordField extends Saveable implements Internal.Reco
      * pipe.  Default: `false`.
      *
      */
-    streamable: undefined | boolean;
+    streamable?: undefined | boolean;
     /**
      * Only valid when `type: File` or is an array of `items: File`.
      *
@@ -86,17 +86,17 @@ export declare class OutputRecordField extends Saveable implements Internal.Reco
      * File object.
      *
      */
-    format: undefined | string;
+    format?: undefined | string;
     constructor({ extensionFields, loadingOptions, name, doc, type, label, secondaryFiles, streamable, format }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        doc: undefined | string | Array<string>;
+        doc?: undefined | string | Array<string>;
         name: string;
         type: string | Internal.OutputRecordSchema | Internal.OutputEnumSchema | Internal.OutputArraySchema | Array<string | Internal.OutputRecordSchema | Internal.OutputEnumSchema | Internal.OutputArraySchema>;
-        label: undefined | string;
-        secondaryFiles: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
-        streamable: undefined | boolean;
-        format: undefined | string;
+        label?: undefined | string;
+        secondaryFiles?: undefined | Internal.SecondaryFileSchema | Array<Internal.SecondaryFileSchema>;
+        streamable?: undefined | boolean;
+        format?: undefined | string;
     });
     /**
      * Used to construct instances of {@link OutputRecordField }.

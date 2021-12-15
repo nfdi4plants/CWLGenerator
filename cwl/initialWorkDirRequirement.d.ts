@@ -40,12 +40,12 @@ export declare class InitialWorkDirRequirement extends Saveable implements Inter
      * is undefined.
      *
      */
-    listing: string | Array<undefined | Internal.Dirent | string | Internal.File | Internal.Directory | Array<Internal.File | Internal.Directory>>;
+    listing?: string | Array<undefined | Internal.Dirent | string | Internal.File | Internal.Directory | Array<Internal.File | Internal.Directory>>;
     constructor({ extensionFields, loadingOptions, class_, listing }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         class_: string;
-        listing: string | Array<undefined | Internal.Dirent | string | Internal.File | Internal.Directory | Array<Internal.File | Internal.Directory>>;
+        listing?: string | Array<undefined | Internal.Dirent | string | Internal.File | Internal.Directory | Array<Internal.File | Internal.Directory>>;
     });
     /**
      * Used to construct instances of {@link InitialWorkDirRequirement }.

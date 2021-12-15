@@ -42,7 +42,7 @@ export declare class Dirent extends Saveable {
      * where the file or directory must be placed.
      *
      */
-    entryname: undefined | string;
+    entryname?: undefined | string;
     /**
      * If the value is a string literal or an expression which evaluates to a
      * string, a new text file must be created with the string as the file contents.
@@ -91,13 +91,13 @@ export declare class Dirent extends Saveable {
      * not explicitly marked as writable.
      *
      */
-    writable: undefined | boolean;
+    writable?: undefined | boolean;
     constructor({ extensionFields, loadingOptions, entryname, entry, writable }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        entryname: undefined | string;
+        entryname?: undefined | string;
         entry: string;
-        writable: undefined | boolean;
+        writable?: undefined | boolean;
     });
     /**
      * Used to construct instances of {@link Dirent }.

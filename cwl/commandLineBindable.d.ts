@@ -9,11 +9,11 @@ export declare class CommandLineBindable extends Saveable {
     /**
      * Describes how to turn this object into command line arguments.
      */
-    inputBinding: undefined | Internal.CommandLineBinding;
+    inputBinding?: undefined | Internal.CommandLineBinding;
     constructor({ extensionFields, loadingOptions, inputBinding }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        inputBinding: undefined | Internal.CommandLineBinding;
+        inputBinding?: undefined | Internal.CommandLineBinding;
     });
     /**
      * Used to construct instances of {@link CommandLineBindable }.

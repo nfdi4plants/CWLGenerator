@@ -14,12 +14,12 @@ export declare class LoadListingRequirement extends Saveable implements Internal
      * Always 'LoadListingRequirement'
      */
     class_: string;
-    loadListing: undefined | string;
+    loadListing?: undefined | string;
     constructor({ extensionFields, loadingOptions, class_, loadListing }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
         class_: string;
-        loadListing: undefined | string;
+        loadListing?: undefined | string;
     });
     /**
      * Used to construct instances of {@link LoadListingRequirement }.

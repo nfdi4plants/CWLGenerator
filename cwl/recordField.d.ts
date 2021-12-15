@@ -16,7 +16,7 @@ export declare class RecordField extends Saveable implements Internal.Documented
     /**
      * A documentation string for this object, or an array of strings which should be concatenated.
      */
-    doc: undefined | string | Array<string>;
+    doc?: undefined | string | Array<string>;
     /**
      * The field type
      *
@@ -25,7 +25,7 @@ export declare class RecordField extends Saveable implements Internal.Documented
     constructor({ extensionFields, loadingOptions, name, doc, type }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        doc: undefined | string | Array<string>;
+        doc?: undefined | string | Array<string>;
         name: string;
         type: string | Internal.RecordSchema | Internal.EnumSchema | Internal.ArraySchema | Array<string | Internal.RecordSchema | Internal.EnumSchema | Internal.ArraySchema>;
     });

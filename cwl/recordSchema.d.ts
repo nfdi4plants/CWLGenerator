@@ -9,7 +9,7 @@ export declare class RecordSchema extends Saveable {
     /**
      * Defines the fields of the record.
      */
-    fields: undefined | Array<Internal.RecordField>;
+    fields?: undefined | Array<Internal.RecordField>;
     /**
      * Must be `record`
      */
@@ -17,7 +17,7 @@ export declare class RecordSchema extends Saveable {
     constructor({ extensionFields, loadingOptions, fields, type }: {
         extensionFields?: Dictionary<any>;
         loadingOptions?: LoadingOptions;
-        fields: undefined | Array<Internal.RecordField>;
+        fields?: undefined | Array<Internal.RecordField>;
         type: string;
     });
     /**

@@ -10,16 +10,8 @@ export function createMinimalInput (name: string, type: CWLInputType | CWLInputT
     let binding = createBinding(position,prefix)
     return new cwltsauto.CommandInputParameter({
         id: name,
-        doc: undefined,
         type: type,
-        label: undefined,
-        secondaryFiles: undefined,
-        streamable: undefined,
-        format: undefined,
-        loadContents: undefined,
-        loadListing: undefined,
-        inputBinding: binding,
-        default_: undefined
+        inputBinding: binding
     })
 }
 
@@ -59,11 +51,7 @@ function createBinding (position: number, prefix: string): cwltsauto.CommandLine
     return new cwltsauto.CommandLineBinding({
             loadContents: false,
             position: position,
-            prefix: prefix,
-            separate: undefined,
-            itemSeparator: undefined,
-            valueFrom: undefined,
-            shellQuote: undefined
+            prefix: prefix
     })
 }
 

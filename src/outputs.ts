@@ -9,13 +9,7 @@ type CWLOutputType =
 export function createMininmalOutput (name: string, type: CWLOutputType | CWLOutputType[]): cwltsauto.CommandOutputParameter{
     return new cwltsauto.CommandOutputParameter({
         id: name,
-        label: undefined,
-        secondaryFiles: undefined,
-        streamable: undefined,
-        doc: undefined,
-        format: undefined,
-        type: type,
-        outputBinding: undefined,
+        type: type
     })
 }
 
@@ -49,10 +43,6 @@ export function assignOutputBinding (output: cwltsauto.CommandOutputParameter, o
 
 export function createOutputBinding (): cwltsauto.CommandOutputBinding {
     return new cwltsauto.CommandOutputBinding({
-        loadContents: undefined,
-        loadListing: undefined,
-        glob: undefined,
-        outputEval: undefined
     })
 }
 

@@ -2,24 +2,11 @@ import * as cwltsauto from 'cwl-ts-auto'
 
 export function createMinimalCommandLineTool (baseCommand: string[], inputs: cwltsauto.CommandInputParameter[], outputs: cwltsauto.CommandOutputParameter[]) {
     return new cwltsauto.CommandLineTool({
-        id: undefined,
         class_: "CommandLineTool",
-        label: undefined,
-        doc: undefined,
         inputs: inputs,
         outputs: outputs,
-        requirements: undefined,
-        hints: undefined,
         cwlVersion: "v1.2",
-        intent: undefined,
-        baseCommand: baseCommand,
-        arguments_: undefined,
-        stdin: undefined,
-        stderr: undefined,
-        stdout: undefined,
-        successCodes: undefined,
-        temporaryFailCodes: undefined,
-        permanentFailCodes: undefined
+        baseCommand: baseCommand
     })
 }
 

@@ -1,6 +1,6 @@
 import * as cwltsauto from 'cwl-ts-auto'
 
-export function createMinimalCommandLineTool (baseCommand: string[], inputs: cwltsauto.CommandInputParameter[], outputs: cwltsauto.CommandOutputParameter[]) {
+export function createMinimalCommandLineTool (baseCommand: string | string[], inputs: cwltsauto.CommandInputParameter[], outputs: cwltsauto.CommandOutputParameter[]) {
     return new cwltsauto.CommandLineTool({
         class_: "CommandLineTool",
         inputs: inputs,

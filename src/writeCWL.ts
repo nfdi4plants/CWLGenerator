@@ -1,12 +1,17 @@
 import * as inquirer from 'inquirer'
 import fs from "fs" 
+import { createMinimalInput } from './inputs'
+import { createCommandInputArraySchema } from './inputs'
+import { assignGlob, createCommandOutputArraySchema, createMininmalOutput } from './outputs'
+import { CommandInputArraySchema } from 'cwl-ts-auto'
+import { createMinimalCommandLineTool } from './commandLineTool'
 
 console.log('CWLGenerator!')
 
 interface Answers  {
     BaseCommand: string | undefined
-    Inputs: Input []
-    Outputs: any[]
+    Inputs: Input[]
+    Outputs: Output[]
 }
 
 interface Input {
@@ -53,6 +58,49 @@ async function askFreeInput (name: string, message: string) {
             message: message
         }
     )
+}
+
+function createInputParameterFromInputs (inputs: Input[]) {
+    return inputs
+        .map(input => {
+            if (input.isArray) {
+                var inputType: string | CommandInputArraySchema = createCommandInputArraySchema(input.Type)
+            } else {
+                var inputType: string | CommandInputArraySchema = input.Type
+            }
+            return createMinimalInput(
+                input.Name,
+                inputType,
+                input.Position,
+                input.Prefix
+            )
+        })
+}
+
+function createOutputParameterFromOutputs (outputs: Output[]) {
+    return outputs
+        .map(output => {
+            if (output.isArray) {
+                var outputType: string | CommandInputArraySchema = createCommandOutputArraySchema(output.Type)
+            } else {
+                var outputType: string | CommandInputArraySchema = output.Type
+            }
+            let outputRes =
+                createMininmalOutput(
+                    output.Name,
+                    outputType
+                )
+            assignGlob(outputRes, output.Location)
+            return outputRes
+        })
+}
+
+function createCommandLineToolFromAnswers (answers: Answers) {
+    let inputs = createInputParameterFromInputs(answers.Inputs)
+    let outputs = createOutputParameterFromOutputs(answers.Outputs)
+    let baseCommand = answers.BaseCommand as string
+    return createMinimalCommandLineTool(baseCommand,inputs,outputs)
+
 }
 
 async function main() {
@@ -111,6 +159,7 @@ async function main() {
             (await askFreeInput("OutputCount", "How many outputs does your tool have?"))
                 .OutputCount as number
         for (let i = 0; i < outputCount; i++) {
+            console.log(`Configuring Output ${i+1}`)
             let outputName =
                 (await askFreeInput("OutputName", "What is the name of the output?"))
                     .OutputName as string
@@ -147,7 +196,7 @@ async function main() {
     
     allAnswers.Outputs = outputs
 
-    return allAnswers
+    return (createCommandLineToolFromAnswers(allAnswers))
 }
 
-main().then((res) => console.log(res))
+main().then((res) => fs.writeFileSync("./test.cwl", JSON.stringify(res)))

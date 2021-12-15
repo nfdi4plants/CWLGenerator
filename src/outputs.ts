@@ -6,6 +6,12 @@ type CWLOutputType =
     | cwltsauto.CommandOutputEnumSchema 
     | cwltsauto.CommandOutputArraySchema
 
+type OutputSchema =
+    | string
+    | cwltsauto.CommandOutputArraySchema
+    | cwltsauto.CommandOutputRecordSchema
+    | cwltsauto.CommandOutputEnumSchema
+
 export function createMininmalOutput (name: string, type: CWLOutputType | CWLOutputType[]): cwltsauto.CommandOutputParameter{
     return new cwltsauto.CommandOutputParameter({
         id: name,
@@ -62,4 +68,13 @@ export function assignGlob (outputBinding: cwltsauto.CommandOutputBinding, glob:
 
 export function assignOutputEval (outputBinding: cwltsauto.CommandOutputBinding, outputEval: string): void {
     outputBinding.outputEval = outputEval
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function createCommandOutputArraySchema (items: OutputSchema): cwltsauto.CommandInputArraySchema {
+    return new cwltsauto.CommandOutputArraySchema({
+        items: items,
+        type: `array`
+    })
 }

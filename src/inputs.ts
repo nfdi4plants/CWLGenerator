@@ -1,17 +1,25 @@
 import * as cwltsauto from 'cwl-ts-auto'
 
-export type CWLInputType =
+type CWLInputType =
     | string 
     | cwltsauto.CommandInputRecordSchema 
     | cwltsauto.CommandInputEnumSchema 
     | cwltsauto.CommandInputArraySchema 
+
+type InputSchema =
+    |string
+    | cwltsauto.CommandInputArraySchema
+    | cwltsauto.CommandInputRecordSchema
+    | cwltsauto.CommandInputEnumSchema
 
 export function createMinimalInput (name: string, type: CWLInputType | CWLInputType[], position: number, prefix: string): cwltsauto.CommandInputParameter {
     let binding = createBinding(position,prefix)
     return new cwltsauto.CommandInputParameter({
         id: name,
         type: type,
-        inputBinding: binding
+        inputBinding: binding,
+        extensionFields: undefined,
+        loadingOptions: undefined
     })
 }
 
@@ -52,6 +60,13 @@ function createBinding (position: number, prefix: string): cwltsauto.CommandLine
             loadContents: false,
             position: position,
             prefix: prefix
+    })
+}
+
+export function createCommandInputArraySchema (items: InputSchema): cwltsauto.CommandInputArraySchema {
+    return new cwltsauto.CommandInputArraySchema({
+        items: items,
+        type: `array`
     })
 }
 

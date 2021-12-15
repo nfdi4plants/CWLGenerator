@@ -2,9 +2,10 @@ import * as inquirer from 'inquirer'
 import fs from "fs" 
 import { createMinimalInput } from './inputs'
 import { createCommandInputArraySchema } from './inputs'
-import { assignGlob, createCommandOutputArraySchema, createMininmalOutput } from './outputs'
+import { assignGlob, assignOutputBinding, createCommandOutputArraySchema, createMininmalOutput, createOutputBinding } from './outputs'
 import { CommandInputArraySchema } from 'cwl-ts-auto'
 import { createMinimalCommandLineTool } from './commandLineTool'
+import { baseCommandText, inputCountText, inputIsArrayText, inputNameText, inputPrefixText, inputTypeText, outputCountText, outputIsArrayText, outputLocationKnownText, outputLocationText, outputNameText, outputTypeText } from './questionTexts'
 
 console.log('CWLGenerator!')
 
@@ -60,6 +61,22 @@ async function askFreeInput (name: string, message: string) {
     )
 }
 
+async function askNumber (name: string, message: string) {
+    return await inquirer.prompt(
+        {
+            type: 'input',
+            name: name,
+            message: message,
+            validate: (answer) => {
+                if (isNaN(answer)) {
+                  return "please enter a number (e.g. 3)"
+                }
+                return true
+              }
+        }
+    )
+}
+
 function createInputParameterFromInputs (inputs: Input[]) {
     return inputs
         .map(input => {
@@ -90,7 +107,9 @@ function createOutputParameterFromOutputs (outputs: Output[]) {
                     output.Name,
                     outputType
                 )
-            assignGlob(outputRes, output.Location)
+            let outputBinding = createOutputBinding()
+            assignGlob(outputBinding, output.Location)
+            assignOutputBinding(outputRes, outputBinding)
             return outputRes
         })
 }
@@ -99,8 +118,7 @@ function createCommandLineToolFromAnswers (answers: Answers) {
     let inputs = createInputParameterFromInputs(answers.Inputs)
     let outputs = createOutputParameterFromOutputs(answers.Outputs)
     let baseCommand = answers.BaseCommand as string
-    return createMinimalCommandLineTool(baseCommand,inputs,outputs)
-
+    return createMinimalCommandLineTool(baseCommand,inputs,outputs).save()
 }
 
 async function main() {
@@ -111,12 +129,12 @@ async function main() {
     }
 
     let baseCommand = 
-        await askFreeInput("BaseCommand", "What is the basecommand to run your tool (e.g. samtools view)")
+        await askFreeInput("BaseCommand", baseCommandText)
 
     allAnswers.BaseCommand = baseCommand.BaseCommand as string
 
     let inputCount =
-        (await askFreeInput("InputCount", "How many inputs does your tool have?"))
+        (await askNumber("InputCount", inputCountText))
             .InputCount as number
 
     let inputs: Input[] = []
@@ -124,16 +142,16 @@ async function main() {
     for (let i = 0; i < inputCount; i++) {
         console.log(`Configuring Input ${i+1}`)
         let inputName = 
-            (await askFreeInput("InputName", "What is the name of the input?"))
+            (await askFreeInput("InputName", inputNameText))
                 .InputName as string
         let inputPrefix =
-            (await askFreeInput("InputPrefix", "What is the command prefix for your input (press Enter if there is none)"))
+            (await askFreeInput("InputPrefix", inputPrefixText))
                 .InputPrefix as string
         let isArray =
-            (await askYesNo("isArray", "is your input a list of things"))
+            (await askYesNo("isArray", inputIsArrayText))
                 .isArray as boolean
         let inputType =
-            (await askChoices("InputType", "What is the type of the input?", ["string","File", "Directory", "Number"]))
+            (await askChoices("InputType", inputTypeText, ["string","File", "Directory", "Number"]))
                 .InputType as string
         let input: Input =
             {
@@ -149,28 +167,28 @@ async function main() {
     allAnswers.Inputs = inputs
         
     let outputLocationKnown =
-        (await askYesNo("OutputLocationKnown", "Do you know the location of your output?"))
+        (await askYesNo("OutputLocationKnown", outputLocationKnownText))
             .OutputLocationKnown as boolean
 
     let outputs: Output[] = []
 
     if (outputLocationKnown) {
         let outputCount = 
-            (await askFreeInput("OutputCount", "How many outputs does your tool have?"))
+            (await askNumber("OutputCount", outputCountText))
                 .OutputCount as number
         for (let i = 0; i < outputCount; i++) {
             console.log(`Configuring Output ${i+1}`)
             let outputName =
-                (await askFreeInput("OutputName", "What is the name of the output?"))
+                (await askFreeInput("OutputName", outputNameText))
                     .OutputName as string
             let isArray =
-                (await askYesNo("isArray", "is your output a list of things"))
+                (await askYesNo("isArray", outputIsArrayText))
                     .isArray as boolean
             let outputType =
-                (await askChoices("OutputType", "What is the type of the output?", ["File", "Directory", "stdout"]))
+                (await askChoices("OutputType", outputTypeText, ["File", "Directory", "stdout"]))
                     .OutputType as string
             let outputLocation =
-                (await askFreeInput("OutputLocation", "Where is your output located?"))
+                (await askFreeInput("OutputLocation", outputLocationText))
                     .OutputLocation as string
             let output: Output =
                 {

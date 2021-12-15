@@ -18,8 +18,6 @@ export function createMinimalInput (name: string, type: CWLInputType | CWLInputT
         id: name,
         type: type,
         inputBinding: binding,
-        extensionFields: undefined,
-        loadingOptions: undefined
     })
 }
 
@@ -57,7 +55,6 @@ export function assignLoadListing (input: cwltsauto.CommandInputParameter, loadL
 
 function createBinding (position: number, prefix: string): cwltsauto.CommandLineBinding {
     return new cwltsauto.CommandLineBinding({
-            loadContents: false,
             position: position,
             prefix: prefix
     })

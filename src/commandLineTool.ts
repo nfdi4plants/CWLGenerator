@@ -10,7 +10,7 @@ export function createMinimalCommandLineTool (baseCommand: string[], inputs: cwl
         outputs: outputs,
         requirements: undefined,
         hints: undefined,
-        cwlVersion: "1.2",
+        cwlVersion: "v1.2",
         intent: undefined,
         baseCommand: baseCommand,
         arguments_: undefined,

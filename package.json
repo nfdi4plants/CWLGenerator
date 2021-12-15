@@ -2,7 +2,7 @@
   "name": "cwlgenerator",
   "version": "0.0.1",
   "description": "A tool that generates .cwl files by asking a series of questions.",
-  "main": "index.js",
+  "main": "dist/writeCWL.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/writeCWL.js"
@@ -23,7 +23,11 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "cwl-ts-auto": "file:cwl",
+    "cwl-ts-auto": "file:cwl-ts-auto",
     "inquirer": "^8.2.0"
-  }
+  },
+  "files": [
+    "/dist",
+    "/cwl-ts-auto"
+  ]
 }

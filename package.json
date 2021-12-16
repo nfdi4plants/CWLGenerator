@@ -1,8 +1,11 @@
 {
   "name": "cwlgenerator",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A tool that generates .cwl files by asking a series of questions.",
   "main": "dist/writeCWL.js",
+  "bin": {
+    "cwlgenerator": "dist/writeCWL.js"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node dist/writeCWL.js"

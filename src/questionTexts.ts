@@ -1,3 +1,7 @@
+export const toolNameText =
+    "What is the name of your tool (without spaces)?\n"
+    + "This will be the name of the .cwl file"
+
 export const baseCommandText =
     "What is the basecommand to run your tool (e.g. samtools view)."
 

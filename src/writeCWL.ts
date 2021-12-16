@@ -7,7 +7,7 @@ import { createCommandInputArraySchema } from './inputs'
 import { assignGlob, assignOutputBinding, createCommandOutputArraySchema, createMininmalOutput, createOutputBinding } from './outputs'
 import { CommandInputArraySchema } from 'cwl-ts-auto'
 import { createMinimalCommandLineTool } from './commandLineTool'
-import { baseCommandText, inputCountText, inputIsArrayText, inputNameText, inputPrefixText, inputTypeText, outputCountText, outputIsArrayText, outputLocationKnownText, outputLocationText, outputNameText, outputTypeText } from './questionTexts'
+import { baseCommandText, inputCountText, inputIsArrayText, inputNameText, inputPrefixText, inputTypeText, outputCountText, outputIsArrayText, outputLocationKnownText, outputLocationText, outputNameText, outputTypeText, toolNameText } from './questionTexts'
 
 console.log('CWLGenerator!')
 
@@ -298,4 +298,15 @@ async function main() {
     return (createCommandLineToolFromAnswers(allAnswers))
 }
 
-main().then((res) => fs.writeFileSync("./test.cwl", JSON.stringify(res)))
+async function name () {
+    let toolName =
+        (await askFreeInput("ToolName", toolNameText))
+            .ToolName as string
+    return toolName
+}
+
+main().then((res) => {
+    name().then(n => {
+        fs.writeFileSync(`./${n}.cwl`, JSON.stringify(res))
+    })
+})

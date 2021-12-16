@@ -13,6 +13,8 @@ interface Answers  {
     BaseCommand: string | undefined
     Inputs: Input[]
     Outputs: Output[]
+    Requirements: string[]
+    Hints: Requirement[]
 }
 
 interface Input {
@@ -28,6 +30,26 @@ interface Output {
     isArray: boolean
     Type: string
     Location: string
+}
+
+interface Requirement {
+    InlineJavascript: boolean
+    SchemaDef: boolean
+    LoadListing: boolean
+    Docker: boolean
+    Software: boolean
+    InitialWorkDir: boolean
+    EnvVar: boolean
+    ShellCommand: boolean
+    Resource: boolean
+    WorkReuse: boolean
+    NetworkAccess: boolean
+    InplaceUpdate: boolean
+    ToolTimeLimit: boolean
+    SubworkflowFeature: boolean
+    ScatterFeature: boolean
+    MultipleInputFeature: boolean
+    StepInputExpression: boolean
 }
 
 async function askYesNo (name: string, message: string) {
@@ -73,6 +95,17 @@ async function askNumber (name: string, message: string) {
                 }
                 return true
               }
+        }
+    )
+}
+
+async function askCheckbox (name: string, message: string, choices: string[]) {
+    return await inquirer.prompt(
+        {
+            type: 'checkbox',
+            name: name,
+            message: message,
+            choices: choices
         }
     )
 }
@@ -125,13 +158,19 @@ async function main() {
     let allAnswers: Answers = {
         BaseCommand: undefined,
         Inputs: [],
-        Outputs: []
+        Outputs: [],
+        Requirements: [],
+        Hints: []
     }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     let baseCommand = 
         await askFreeInput("BaseCommand", baseCommandText)
 
     allAnswers.BaseCommand = baseCommand.BaseCommand as string
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     let inputCount =
         (await askNumber("InputCount", inputCountText))
@@ -165,7 +204,9 @@ async function main() {
         }
 
     allAnswers.Inputs = inputs
-        
+ 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     let outputLocationKnown =
         (await askYesNo("OutputLocationKnown", outputLocationKnownText))
             .OutputLocationKnown as boolean
@@ -195,7 +236,7 @@ async function main() {
                     Name: outputName,
                     isArray: isArray,
                     Type: outputType,
-                    Location: outputLocation
+                    Location: "$(runtime.outdir)" + outputLocation
                 }
 
             outputs.push(output)
@@ -206,13 +247,48 @@ async function main() {
                 Name: "WorkingDirectory",
                 isArray: false,
                 Type: "Directory",
-                Location: "./"
+                Location: "$(runtime.outdir)"
             }
-
         outputs.push(output)
     }
     
     allAnswers.Outputs = outputs
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // let requirementsNeeded =
+    //     (await askYesNo("RequirementsNeeded", "Do you need additional requirements to run your workflow?"))
+    //         .RequirementsNeeded as boolean
+    // if (requirementsNeeded) {
+    //     let requirements =
+    //         (
+    //             await askCheckbox(
+    //                     "RequirementsList",
+    //                     "Please check the required Requirements",
+    //                     [
+    //                         "InlineJavascriptRequirement",
+    //                         "SchemaDefRequirement",
+    //                         "LoadListingRequirement",
+    //                         "DockerRequirement",
+    //                         "SoftwareRequirement",
+    //                         "InitialWorkDirRequirement",
+    //                         "EnvVarRequirement",
+    //                         "ShellCommandRequirement",
+    //                         "ResourceRequirement",
+    //                         "WorkReuse",
+    //                         "NetworkAccess",
+    //                         "InplaceUpdateRequirement",
+    //                         "ToolTimeLimit",
+    //                         "SubworkflowFeatureRequirement",
+    //                         "ScatterFeatureRequirement",
+    //                         "MultipleInputFeatureRequirement",
+    //                         "StepInputExpressionRequirement"
+    //                     ]
+    //             )
+    //         ).RequirementsList as string[]
+    //     allAnswers.Requirements = requirements
+    //     console.log(allAnswers.Requirements)
+    // }
 
     return (createCommandLineToolFromAnswers(allAnswers))
 }

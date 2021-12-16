@@ -10,7 +10,7 @@ import { baseCommandText, inputCountText, inputIsArrayText, inputNameText, input
 console.log('CWLGenerator!')
 
 interface Answers  {
-    BaseCommand: string | undefined
+    BaseCommand: string[] | undefined
     Inputs: Input[]
     Outputs: Output[]
     Requirements: string[]
@@ -150,7 +150,7 @@ function createOutputParameterFromOutputs (outputs: Output[]) {
 function createCommandLineToolFromAnswers (answers: Answers) {
     let inputs = createInputParameterFromInputs(answers.Inputs)
     let outputs = createOutputParameterFromOutputs(answers.Outputs)
-    let baseCommand = answers.BaseCommand as string
+    let baseCommand = answers.BaseCommand as string[]
     return createMinimalCommandLineTool(baseCommand,inputs,outputs).save()
 }
 
@@ -166,9 +166,12 @@ async function main() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     let baseCommand = 
-        await askFreeInput("BaseCommand", baseCommandText)
+        (
+            (await askFreeInput("BaseCommand", baseCommandText))
+                .BaseCommand as string
+        ).split(" ")
 
-    allAnswers.BaseCommand = baseCommand.BaseCommand as string
+    allAnswers.BaseCommand = baseCommand
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

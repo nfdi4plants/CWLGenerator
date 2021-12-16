@@ -20,10 +20,11 @@ export const inputTypeText =
 export const outputLocationKnownText =
     "Do you know the location of your output? The location is required as a Glob pattern.\n"
     + "Examples:\n"
-    + "- An output directory in the working directory: ./myOutputDir\n"
-    + "- An output directory in a subfolder of the working directory: ./*/myOutputDir\n"
-    + "- Files of the same type in the working directory: ./*.txt\n"
-    + "- Files of the same type in a subfolder of the working directory: ./*/*.txt\n"
+    + "- An output directory in the working directory: /myOutputDir\n"
+    + "- An output directory in a subfolder of the working directory: /*/myOutputDir\n"
+    + "- Files of the same type in the working directory: /*.txt\n"
+    + "- Files of the same type in a subfolder of the working directory: /*/*.txt\n"
+    + "- If your output directory is specified under inputs: /$(inputs.NameOfTheInput)"
     + "If the location is unknown, the entire working directory will be returned."
 
 export const outputCountText =

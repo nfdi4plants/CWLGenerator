@@ -1,5 +1,24 @@
 import * as cwltsauto from 'cwl-ts-auto'
 
+type Requirements =
+    |cwltsauto.InlineJavascriptRequirement
+    | cwltsauto.SchemaDefRequirement
+    | cwltsauto.LoadListingRequirement
+    | cwltsauto.DockerRequirement
+    | cwltsauto.SoftwareRequirement
+    | cwltsauto.InitialWorkDirRequirement
+    | cwltsauto.EnvVarRequirement
+    | cwltsauto.ShellCommandRequirement
+    | cwltsauto.ResourceRequirement
+    | cwltsauto.WorkReuse
+    | cwltsauto.NetworkAccess
+    | cwltsauto.InplaceUpdateRequirement
+    | cwltsauto.ToolTimeLimit
+    | cwltsauto.SubworkflowFeatureRequirement
+    | cwltsauto.ScatterFeatureRequirement
+    | cwltsauto.MultipleInputFeatureRequirement
+    | cwltsauto.StepInputExpressionRequirement
+
 export function createMinimalCommandLineTool (baseCommand: string | string[], inputs: cwltsauto.CommandInputParameter[], outputs: cwltsauto.CommandOutputParameter[]) {
     return new cwltsauto.CommandLineTool({
         class_: "CommandLineTool",
@@ -20,7 +39,7 @@ export function assignDoc (cmd: cwltsauto.CommandLineTool, doc: string | string[
     cmd.doc = doc
 }
 
-export function assignRequirements (cmd: cwltsauto.CommandLineTool, requirements: (cwltsauto.InlineJavascriptRequirement | cwltsauto.SchemaDefRequirement | cwltsauto.LoadListingRequirement | cwltsauto.DockerRequirement | cwltsauto.SoftwareRequirement | cwltsauto.InitialWorkDirRequirement | cwltsauto.EnvVarRequirement | cwltsauto.ShellCommandRequirement | cwltsauto.ResourceRequirement | cwltsauto.WorkReuse | cwltsauto.NetworkAccess | cwltsauto.InplaceUpdateRequirement | cwltsauto.ToolTimeLimit | cwltsauto.SubworkflowFeatureRequirement | cwltsauto.ScatterFeatureRequirement | cwltsauto.MultipleInputFeatureRequirement | cwltsauto.StepInputExpressionRequirement)[]): void {
+export function assignRequirements (cmd: cwltsauto.CommandLineTool, requirements: Requirements[]): void {
     cmd.requirements = requirements
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "cwlgenerator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A tool that generates .cwl files by asking a series of questions.",
   "main": "dist/writeCWL.js",
   "preferGlobal": true,

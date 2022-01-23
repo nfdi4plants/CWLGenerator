@@ -6,13 +6,15 @@ import { createMinimalInput } from './inputs'
 import { createCommandInputArraySchema } from './inputs'
 import { assignGlob, assignOutputBinding, createCommandOutputArraySchema, createMininmalOutput, createOutputBinding } from './outputs'
 import { CommandInputArraySchema } from 'cwl-ts-auto'
-import { createMinimalCommandLineTool } from './commandLineTool'
-import { baseCommandText, inputCountText, inputIsArrayText, inputNameText, inputPrefixText, inputTypeText, outputCountText, outputIsArrayText, outputLocationKnownText, outputLocationText, outputNameText, outputTypeText, toolNameText } from './questionTexts'
+import { assignStdout, createMinimalCommandLineTool } from './commandLineTool'
+import { baseCommandText, inputCountText, inputIsArrayText, inputNameText, inputPrefixText, inputTypeText, outputCountText, outputIsArrayText, outputLocationKnownText, outputLocationText, outputNameText, outputTypeText, stdoutText, toolNameText } from './questionTexts'
+import { stdout } from 'process'
 
 console.log('CWLGenerator!')
 
 interface Answers  {
     BaseCommand: string[] | undefined
+    Stdout: string | undefined
     Inputs: Input[]
     Outputs: Output[]
     Requirements: string[]
@@ -31,7 +33,7 @@ interface Output {
     Name: string
     isArray: boolean
     Type: string
-    Location: string
+    Location: string | undefined
 }
 
 interface Requirement {
@@ -143,8 +145,10 @@ function createOutputParameterFromOutputs (outputs: Output[]) {
                     outputType
                 )
             let outputBinding = createOutputBinding()
-            assignGlob(outputBinding, output.Location)
-            assignOutputBinding(outputRes, outputBinding)
+            if (output.Location != undefined){
+                assignGlob(outputBinding, output.Location)
+                assignOutputBinding(outputRes, outputBinding)
+            }
             return outputRes
         })
 }
@@ -153,12 +157,17 @@ function createCommandLineToolFromAnswers (answers: Answers) {
     let inputs = createInputParameterFromInputs(answers.Inputs)
     let outputs = createOutputParameterFromOutputs(answers.Outputs)
     let baseCommand = answers.BaseCommand as string[]
-    return createMinimalCommandLineTool(baseCommand,inputs,outputs).save()
+    let cmd = createMinimalCommandLineTool(baseCommand,inputs,outputs)
+    if (answers.Stdout != undefined) {
+        assignStdout(cmd,answers.Stdout)
+    }
+    return cmd.save()
 }
 
 async function main() {
     let allAnswers: Answers = {
         BaseCommand: undefined,
+        Stdout: undefined,
         Inputs: [],
         Outputs: [],
         Requirements: [],
@@ -233,18 +242,36 @@ async function main() {
             let outputType =
                 (await askChoices("OutputType", outputTypeText, ["File", "Directory", "stdout"]))
                     .OutputType as string
-            let outputLocation =
-                (await askFreeInput("OutputLocation", outputLocationText))
-                    .OutputLocation as string
-            let output: Output =
-                {
-                    Name: outputName,
-                    isArray: isArray,
-                    Type: outputType,
-                    Location: "$(runtime.outdir)" + outputLocation
+            if (outputType != "stdout") {
+                let outputLocation =
+                    (await askFreeInput("OutputLocation", outputLocationText))
+                        .OutputLocation as string
+                let output: Output =
+                    {
+                        Name: outputName,
+                        isArray: isArray,
+                        Type: outputType,
+                        Location: "$(runtime.outdir)" + outputLocation
+                    }
+                outputs.push(output)
                 }
+            else {
+                
+                let stdoutName =
+                    (await askFreeInput("Stdout", stdoutText))
+                        .Stdout as string
+                        
+                let output: Output =
+                    {
+                        Name: outputName,
+                        isArray: isArray,
+                        Type: outputType,
+                        Location: undefined
+                    }
+                outputs.push(output)
+                allAnswers.Stdout = stdoutName
+            }
 
-            outputs.push(output)
         }
     } else {
         let output: Output =

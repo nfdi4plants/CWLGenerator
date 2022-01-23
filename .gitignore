@@ -353,3 +353,6 @@ dist/
 
 # CWL files
 *.cwl
+cwlgenerator-node10-linux
+cwlgenerator-node10-win.exe
+cwlgenerator-node12-macos

@@ -49,3 +49,6 @@ export const outputLocationText =
     + "- Files of the same type in the working directory: /*.txt\n"
     + "- Files of the same type in a subfolder of the working directory: /*/*.txt\n"
     + "- If your output directory is specified under inputs: /$(inputs.NameOfTheInput)"
+
+export const stdoutText =
+    "How do you want to name your standard output?"

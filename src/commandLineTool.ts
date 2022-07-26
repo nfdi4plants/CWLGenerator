@@ -1,6 +1,6 @@
 import * as cwltsauto from 'cwl-ts-auto'
 
-type Requirements =
+export type Requirements =
     |cwltsauto.InlineJavascriptRequirement
     | cwltsauto.SchemaDefRequirement
     | cwltsauto.LoadListingRequirement

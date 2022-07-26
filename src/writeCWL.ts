@@ -4,11 +4,13 @@ import * as inquirer from 'inquirer'
 import fs from "fs" 
 import { createMinimalInput } from './inputs'
 import { createCommandInputArraySchema } from './inputs'
+import { assignRequirements, Requirements } from './commandLineTool'
 import { assignGlob, assignOutputBinding, createCommandOutputArraySchema, createMininmalOutput, createOutputBinding } from './outputs'
 import { CommandInputArraySchema } from 'cwl-ts-auto'
 import { assignStdout, createMinimalCommandLineTool } from './commandLineTool'
 import { baseCommandText, inputCountText, inputIsArrayText, inputNameText, inputPrefixText, inputTypeText, outputCountText, outputIsArrayText, outputLocationKnownText, outputLocationText, outputNameText, outputTypeText, stdoutText, toolNameText } from './questionTexts'
 import { stdout } from 'process'
+import { assignDockerFile, assignDockerImageId, assignDockerImport, assignDockerLoad, assignDockerOutputDirectory, assignDockerPull, createMinimalDockerRequirement } from './dockerRequirement'
 
 console.log('CWLGenerator!')
 
@@ -17,8 +19,8 @@ interface Answers  {
     Stdout: string | undefined
     Inputs: Input[]
     Outputs: Output[]
-    Requirements: string[]
-    Hints: Requirement[]
+    Requirements: Requirements[]
+    Hints: Requirements[]
 }
 
 interface Input {
@@ -158,6 +160,9 @@ function createCommandLineToolFromAnswers (answers: Answers) {
     let outputs = createOutputParameterFromOutputs(answers.Outputs)
     let baseCommand = answers.BaseCommand as string[]
     let cmd = createMinimalCommandLineTool(baseCommand,inputs,outputs)
+    if (answers.Requirements.length != 0){
+        assignRequirements(cmd,answers.Requirements)
+    }
     if (answers.Stdout != undefined) {
         assignStdout(cmd,answers.Stdout)
     }
@@ -288,43 +293,100 @@ async function main() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // let requirementsNeeded =
-    //     (await askYesNo("RequirementsNeeded", "Do you need additional requirements to run your workflow?"))
-    //         .RequirementsNeeded as boolean
-    // if (requirementsNeeded) {
-    //     let requirements =
-    //         (
-    //             await askCheckbox(
-    //                     "RequirementsList",
-    //                     "Please check the required Requirements",
-    //                     [
-    //                         "InlineJavascriptRequirement",
-    //                         "SchemaDefRequirement",
-    //                         "LoadListingRequirement",
-    //                         "DockerRequirement",
-    //                         "SoftwareRequirement",
-    //                         "InitialWorkDirRequirement",
-    //                         "EnvVarRequirement",
-    //                         "ShellCommandRequirement",
-    //                         "ResourceRequirement",
-    //                         "WorkReuse",
-    //                         "NetworkAccess",
-    //                         "InplaceUpdateRequirement",
-    //                         "ToolTimeLimit",
-    //                         "SubworkflowFeatureRequirement",
-    //                         "ScatterFeatureRequirement",
-    //                         "MultipleInputFeatureRequirement",
-    //                         "StepInputExpressionRequirement"
-    //                     ]
-    //             )
-    //         ).RequirementsList as string[]
-    //     allAnswers.Requirements = requirements
-    //     console.log(allAnswers.Requirements)
-    // }
-
+    let requirementsNeeded =
+        (await askYesNo("RequirementsNeeded", "Do you need additional requirements to run your workflow?"))
+            .RequirementsNeeded as boolean
+    if (requirementsNeeded) {
+        let requirements =
+            (
+                await askCheckbox(
+                        "RequirementsList",
+                        "Please check the required Requirements",
+                        [
+                            "InlineJavascriptRequirement",
+                            "SchemaDefRequirement",
+                            "LoadListingRequirement",
+                            "DockerRequirement",
+                            "SoftwareRequirement",
+                            "InitialWorkDirRequirement",
+                            "EnvVarRequirement",
+                            "ShellCommandRequirement",
+                            "ResourceRequirement",
+                            "WorkReuse",
+                            "NetworkAccess",
+                            "InplaceUpdateRequirement",
+                            "ToolTimeLimit",
+                            "SubworkflowFeatureRequirement",
+                            "ScatterFeatureRequirement",
+                            "MultipleInputFeatureRequirement",
+                            "StepInputExpressionRequirement"
+                        ]
+                )
+            ).RequirementsList as string[]
+        if (requirements.includes("DockerRequirement")) {
+            let dockerRequirements =
+                (
+                    await askCheckbox(
+                        "DockerRequirementsList",
+                        "Please check the required Docker Requirements",
+                        [
+                            "DockerPull",
+                            "DockerLoad",
+                            "DockerFile",
+                            "DockerImport",
+                            "DockerImageID",
+                            "DockerOutputDirectory"
+                        ]
+                    )
+                ).DockerRequirementsList as string[]
+            let dockerRequirement =
+                createMinimalDockerRequirement()
+            for (var dockerR of dockerRequirements) {
+                switch (dockerR){
+                    case "DockerPull":
+                        let pullLocation =
+                            (await askFreeInput("DockerPullAddress", "Specify the immutable Docker digest"))
+                                .DockerPullAddress as string
+                        assignDockerPull(dockerRequirement, pullLocation)
+                        break
+                    case "DockerLoad":
+                        let loadLocation =
+                            (await askFreeInput("DockerLoadAddress", "Specify the Docker HTTP location"))
+                                .DockerLoadAddress as string
+                        assignDockerLoad(dockerRequirement, loadLocation)
+                        break
+                    case "DockerFile":
+                        let fileLocation =
+                            (await askFreeInput("DockerFile", "Specify the Docker file location"))
+                                .DockerFile as string
+                        assignDockerFile(dockerRequirement, fileLocation)
+                        break
+                    case "DockerImport":
+                        let importLocation =
+                            (await askFreeInput("DockerImportAddress", "Specify the Docker HTTP location"))
+                                .DockerImportAddress as string
+                        assignDockerImport(dockerRequirement, importLocation)
+                        break
+                    case "DockerImageID":
+                        let imageID =
+                            (await askFreeInput("ImageID", "Specify the Docker Image ID"))
+                                .ImageID as string
+                        assignDockerImageId(dockerRequirement, imageID)
+                        break
+                    case "DockerOutputDirectory":
+                        let outputDir =
+                            (await askFreeInput("OutputDirectory", "Specify the Docker Output Directory"))
+                                .ImageID as string
+                        assignDockerOutputDirectory(dockerRequirement, outputDir)
+                        break
+                }
+            }
+            allAnswers.Requirements.push(dockerRequirement)
+        }
+                
+    }
     return (createCommandLineToolFromAnswers(allAnswers))
 }
-
 async function name () {
     let toolName =
         (await askFreeInput("ToolName", toolNameText))

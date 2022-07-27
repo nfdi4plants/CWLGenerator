@@ -56,7 +56,7 @@ export function assignLoadListing (input: cwltsauto.CommandInputParameter, loadL
 function createBinding (position: number, prefix: string): cwltsauto.CommandLineBinding {
     return new cwltsauto.CommandLineBinding({
             position: position,
-            prefix: prefix
+            prefix: prefix == "" ? undefined : prefix
     })
 }
 
